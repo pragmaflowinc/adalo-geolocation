@@ -1,0 +1,125 @@
+{
+  "displayName": "GeoLocation",
+  "defaultWidth": 160,
+  "defaultHeight": 32,
+  "components": "./index.js",
+  "icon": "./logo.png",
+  "props": [
+    {
+      "name": "title",
+      "displayName": "Label for the button",
+      "type": "text",
+      "default": "Locate Me!",
+      "styles": {
+        "fontFamily": "@body",
+        "color": "#757575",
+        "fontWeight": "normal"
+      }
+    },
+    {
+      "name": "icon",
+      "displayName": "Icon",
+      "type": "icon",
+      "default": "add"
+    },
+    {
+      "name": "backgroundColor",
+      "displayName": "Background Color",
+      "type": "color",
+      "default": "@primary"
+    },
+    {
+      "name": "timeout",
+      "displayName": "How many milliseconds to wait before giving up?",
+      "type": "number",
+      "default": 15000
+    }, 
+    {
+      "name": "maximumAge",
+      "displayName": "How many milliseconds old can a location be?",
+      "type": "number",
+      "default": 10000
+    }, 
+    {
+      "name": "highAccuracy",
+      "displayName": "Use high accuracy location?",
+      "type": "boolean",
+      "default": true
+    }, 
+    {
+      "name": "significantChanges",
+      "displayName": "Only update on significant changes (iOS)",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "name": "liveUpdates",
+      "displayName": "Continuously reads the location",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "name": "interval",
+      "displayName": "Number of milliseconds before refresh",
+      "type": "number",
+      "default": 5000,
+      "enabled": {
+        "liveUpdates": true
+      }
+    }, 
+    {
+      "name": "onLocationError",
+      "displayName": "Trigger when there is an error reading the location",
+      "type": "action",
+      "arguments": [
+        {
+          "type": "number",
+          "displayName": "GeolocationPositionError reason code"
+        },
+        {
+          "type": "text",
+          "displayName": "Additional details"
+        }
+      ]
+    },
+    {
+      "name": "onLocationChange",
+      "displayName": "Trigger when the location has been updated",
+      "type": "action",
+      "arguments": [
+        {
+          "type": "number",
+          "displayName": "Current latitude"
+        },
+        {
+          "type": "number",
+          "displayName": "Current longitude"
+        },
+        {
+          "type": "number",
+          "displayName": "Current heading"
+        },
+        {
+          "type": "number",
+          "displayName": "Accuracy of location"
+        },
+        {
+          "type": "number",
+          "displayName": "Current altitude"
+        },
+        {
+          "type": "number",
+          "displayName": "Accuracy of the altitude"
+        },
+        {
+          "type": "number",
+          "displayName": "Current speed"
+        },
+        {
+          "type": "number",
+          "displayName": "Timestamp when location was read"
+        }
+      ]
+    }
+  ]
+}

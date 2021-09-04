@@ -1,0 +1,42 @@
+{
+  "name": "adalo-geo-location",
+  "description": "Reads the current location information",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Steven McKeown",
+  "scripts": {
+    "start": "tsc --watch & adalo dev",
+    "build": "tsc",
+    "login": "adalo login",
+    "publish": "adalo publish"
+  },
+  "adalo": {
+    "logo": "./logo.png",
+    "displayName": "GeoLocation",
+    "components": [
+      {
+        "name": "GeoLocation",
+        "manifest": "./src/components/GeoLocation/manifest.json"
+      }
+    ],
+    "iosInstallScript": "./scripts/install_ios.sh",
+    "androidInstallScript": "./scripts/install_android.sh"
+  },
+  "devDependencies": {
+    "@adalo/cli": "^0.0.42",
+    "@types/react": "^17.0.3",
+    "@types/react-native": "^0.63.51",
+    "react": "^16.9.0",
+    "react-art": "^16.6.0",
+    "react-dom": "^16.9.0",
+    "react-native-web": "^0.9.5",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "@protonapp/react-native-material-ui": "^2.0.6",
+    "@voximplant/react-native-foreground-service": "^2.0.0",
+    "react-native-geolocation-service": "^5.2.0",
+    "react-native-vector-icons": "^8.1.0"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+      "experimentalDecorators": true,
+      "target": "es2016",
+      "module": "commonjs",
+      "lib": ["es2016", "dom", "esnext"],
+      "allowJs": false,
+      "declaration": false,
+      "sourceMap": true,
+      "strict": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "esModuleInterop": true,
+      "emitDecoratorMetadata": true,
+      "resolveJsonModule": true,
+      "skipLibCheck": true,
+      "jsx": "react",
+      "rootDir": "src",
+      "outDir": "build"
+  },
+  "include": ["src/**/*", "src/**/*.json", "src/**/*.png"],
+  "exclude": ["node_modules", "build"]
+}
