@@ -4,7 +4,7 @@ var fs = require('fs')
 const defaultInterfaces = `export interface IStyles {
   fontFamily?: string
   fontSize?: number
-  fontWeight?: number | string
+  fontWeight?: "normal" | "bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900" | undefined
   textAlignment?: string
   color?: string
 }
@@ -49,8 +49,8 @@ function parseProp(prop) {
             builder.push(', ')
           }
         })
+        builder.pop() // remove last comma
       }
-      builder.pop() // remove last comma
       builder.push(`) => void`)
       ret.push(`  ${builder.join('')}`)
     }

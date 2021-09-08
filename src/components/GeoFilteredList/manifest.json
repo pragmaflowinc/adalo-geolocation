@@ -1,0 +1,702 @@
+{
+  "displayName": "GeoFilteredList",
+  "defaultWidth": 600,
+  "defaultHeight": 232,
+  "components": "./index.js",
+  "icon": "./logo.png",
+  "props": [
+    {
+      "name": "items",
+      "displayName": "What is this a list of?",
+      "type": "list"
+    },{
+      "name": "currentLatitude",
+      "displayName": "What is the latitude to filter?",
+      "type": "number"
+    },
+    {
+      "name": "currentLongitude",
+      "displayName": "What is the longitude to filter?",
+      "type": "number"
+    },
+    {
+      "name": "currentRadius",
+      "displayName": "What is the radius?",
+      "type": "number"
+    },
+    {
+      "name": "unitsOfMeasure",
+      "displayName": "What units should we use?",
+      "type": "text",
+      "default": "metric",
+      "control": {
+        "type": "menu",
+        "options": [
+          { "label": "Metric", "value": "metric" },
+          { "label": "Imperial", "value": "imperial" }
+        ]
+      }
+    },
+    {
+      "name": "dividerType",
+      "displayName": "Divider",
+      "type": "text",
+      "default": "inset",
+      "control": {
+        "type": "menu",
+        "options": [
+          { "label": "None", "value": "none" },
+          { "label": "Inset", "value": "inset" },
+          { "label": "Full", "value": "full" }
+        ]
+      }
+    },
+    {
+      "name": "dividerColor",
+      "displayName": "Divider Color",
+      "type": "color",
+      "default": "#e0e0e0"
+    },
+    {
+      "name": "onPress",
+      "displayName": "Click Actions",
+      "type": "action",
+      "role": "listItem",
+      "reference": "items"
+    }
+  ],
+  "childComponents": [
+    {
+      "name": "geoData",
+      "displayName": "Geolocation information",
+      "role": "listItem",
+      "reference": "items",
+      "props": [
+        {
+          "name": "itemLatitude",
+          "displayName": "Latitude",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "itemLongitude",
+          "displayName": "Longitude",
+          "type": "number",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "name": "firstLine",
+      "displayName": "Title",
+      "role": "listItem",
+      "reference": "items",
+      "props": [
+        {
+          "name": "text",
+          "displayName": "Text",
+          "type": "text",
+          "default": "Title",
+          "styles": {
+            "fontFamily": "@body",
+            "color": "#212121",
+            "fontWeight": "normal"
+          }
+        },
+        {
+          "name": "titleLineNum",
+          "displayName": "Title Max Number of Lines",
+          "type": "number",
+          "default": 1,
+          "control": {
+            "type": "menu",
+            "options": [
+              { "label": "One Line", "value": 1 },
+              { "label": "Two Lines", "value": 2 },
+              { "label": "No Max", "value": 3 }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "secondLine",
+      "displayName": "Subtitle",
+      "role": "listItem",
+      "reference": "items",
+      "props": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "displayDistance",
+          "displayName": "Display distance?",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "text",
+          "displayName": "Text",
+          "type": "text",
+          "default": "Subtitle",
+          "styles": {
+            "fontFamily": "@body",
+            "color": "#757575",
+            "fontWeight": "normal"
+          }
+        },
+        {
+          "name": "subtitleLineNum",
+          "displayName": "Subtitle Max Number of Lines",
+          "type": "number",
+          "default": 1,
+          "control": {
+            "type": "menu",
+            "options": [
+              { "label": "One Line", "value": 1 },
+              { "label": "Two Lines", "value": 2 },
+              { "label": "No Max", "value": 3 }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "leftSection",
+      "displayName": "Left Section",
+      "role": "listItem",
+      "reference": "items",
+      "props": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "type",
+          "displayName": "Type",
+          "type": "text",
+          "default": "avatar",
+          "control": {
+            "type": "menu",
+            "options": [
+              { "label": "Icon", "value": "icon" },
+              { "label": "Avatar", "value": "avatar" },
+              { "label": "Image", "value": "image" }
+            ]
+          }
+        },
+        {
+          "name": "icon",
+          "displayName": "Icon",
+          "type": "icon",
+          "default": "add",
+          "enabled": { "type": "icon" }
+        },
+        {
+          "name": "iconColor",
+          "displayName": "Icon Color",
+          "type": "color",
+          "default": "#ccc",
+          "enabled": { "type": "icon" }
+        },
+        {
+          "name": "image",
+          "displayName": "Image",
+          "type": "image",
+          "enabled": { "type": ["image", "avatar"] }
+        }
+      ]
+    },
+    {
+      "name": "rightSection",
+      "displayName": "Right Section",
+      "role": "listItem",
+      "reference": "items",
+      "props": [
+        {
+          "name": "enabled",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "iconType",
+          "displayName": "Icon Type",
+          "type": "text",
+          "default": "icon",
+          "control": {
+            "type": "menu",
+            "options": [
+              { "label": "Icon", "value": "icon" },
+              { "label": "Toggle", "value": "toggle" }
+            ]
+          }
+        },
+        {
+          "name": "icon",
+          "displayName": "Icon",
+          "type": "icon",
+          "default": "add",
+          "enabled": {
+            "iconType": ["toggle", "ADALO_INTERNAL_!previous"]
+          }
+        },
+        {
+          "name": "iconColor",
+          "displayName": "Icon Color",
+          "type": "color",
+          "default": "#ccc",
+          "enabled": {
+            "iconType": ["toggle", "ADALO_INTERNAL_!previous"]
+          }
+        },
+        {
+          "name": "onPress",
+          "displayName": "Click Actions",
+          "type": "action",
+          "role": "listItem",
+          "reference": "items",
+          "enabled": {
+            "iconType": ["toggle", "ADALO_INTERNAL_!previous"]
+          }
+        },
+        {
+          "name": "input",
+          "displayName": "What does this toggle?",
+          "type": "boolean",
+          "role": "autosaveInput",
+          "enabled": {
+            "iconType": "toggle"
+          }
+        },
+        {
+          "name": "activeIcon",
+          "displayName": "Active Icon",
+          "type": "icon",
+          "default": "check-box",
+          "enabled": {
+            "iconType": "toggle"
+          }
+        },
+        {
+          "name": "activeColor",
+          "displayName": "Active Color",
+          "type": "color",
+          "default": "@primary",
+          "enabled": {
+            "iconType": "toggle"
+          }
+        },
+        {
+          "name": "inactiveIcon",
+          "displayName": "Inactive Icon",
+          "type": "icon",
+          "default": "check-box-outline-blank",
+          "enabled": {
+            "iconType": "toggle"
+          }
+        },
+        {
+          "name": "inactiveColor",
+          "displayName": "Inactive Color",
+          "type": "color",
+          "default": "#bbb",
+          "enabled": {
+            "iconType": "toggle"
+          }
+        },
+        {
+          "name": "activeActions",
+          "displayName": "Additional actions only when toggle is turned ON",
+          "type": "action",
+          "enabled": {
+            "iconType": "toggle"
+          }
+        },
+        {
+          "name": "inactiveActions",
+          "displayName": "Additional actions only when toggle is turned OFF",
+          "type": "action",
+          "enabled": {
+            "iconType": "toggle"
+          }
+        }
+      ]
+    },
+    {
+      "name": "background",
+      "displayName": "Background",
+      "props": [
+        { "name": "enabled", "type": "boolean", "default": false },
+        {
+          "name": "backgroundColor",
+          "displayName": "Background Color",
+          "type": "color",
+          "default": "#FFFFFF"
+        },
+        {
+          "name": "border",
+          "displayName": "Border",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "borderColor",
+          "displayName": "Border Color",
+          "type": "color",
+          "default": "#e0e0e0",
+          "enabled": {
+            "border": true
+          }
+        },
+        {
+          "name": "borderSize",
+          "displayName": "Border Size",
+          "type": "number",
+          "default": 1,
+          "control": { "type": "slider", "max": 3, "min": 1 },
+          "enabled": {
+            "border": true
+          }
+        },
+        {
+          "name": "rounding",
+          "displayName": "Rounding",
+          "type": "number",
+          "default": 4,
+          "control": { "type": "slider", "max": 60, "min": 0 }
+        },
+        {
+          "name": "shadow",
+          "displayName": "Shadow",
+          "type": "boolean",
+          "default": true
+        }
+      ]
+    },
+    {
+      "name": "listHeader",
+      "displayName": "List Header",
+      "props": [
+        { "name": "enabled", "type": "boolean", "default": false },
+        {
+          "name": "header",
+          "displayName": "Title",
+          "type": "text",
+          "default": "Title",
+          "styles": {
+            "fontFamily": "@heading",
+            "fontWeight": "600",
+            "color": "@text",
+            "fontSize": "16"
+          }
+        }
+      ]
+    },
+    {
+      "name": "searchBar",
+      "displayName": "List Search",
+      "props": [
+        { "name": "enabled", "type": "boolean", "default": false },
+        {
+          "name": "placeholderText",
+          "displayName": "Placeholder Text",
+          "type": "text",
+          "default": "Search...",
+          "styles": {
+            "fontFamily": "@body",
+            "fontWeight": "normal"
+          },
+          "helpText": "Searches any of the Magic Text used in this list."
+        },
+        {
+          "name": "notFoundText",
+          "displayName": "No Search Results Message",
+          "type": "text",
+          "default": "No Results",
+          "styles": {
+            "fontWeight": "600",
+            "fontFamily": "@body",
+            "fontSize": "18",
+            "color": "#9E9E9E"
+          }
+        },
+        {
+          "name": "customStyles",
+          "displayName": "Search Input Styles",
+          "type": "boolean",
+          "default": "simple",
+          "control": {
+            "type": "menu",
+            "options": [
+              { "label": "Simple Gray & Rounded", "value": "simple" },
+              { "label": "Standard Icon & Input", "value": "standard" },
+              { "label": "Custom", "value": "custom" }
+            ]
+          }
+        },
+        {
+          "name": "hasIcon",
+          "displayName": "Icon",
+          "type": "boolean",
+          "default": false,
+          "enabled": {
+            "customStyles": "custom"
+          }
+        },
+        {
+          "name": "icon",
+          "displayName": "Icon",
+          "type": "icon",
+          "default": "search",
+          "enabled": {
+            "customStyles": "custom",
+            "hasIcon": true
+          }
+        },
+        {
+          "name": "iconColor",
+          "displayName": "Icon Color",
+          "type": "color",
+          "default": "#9e9e9e",
+          "enabled": {
+            "customStyles": "custom",
+            "hasIcon": true
+          }
+        },
+        {
+          "name": "backgroundColor",
+          "displayName": "Background Color",
+          "type": "color",
+          "default": "#F5F5F5",
+          "enabled": {
+            "customStyles": "custom"
+          }
+        },
+        {
+          "name": "hasBorder",
+          "displayName": "Border",
+          "type": "boolean",
+          "default": true,
+          "enabled": {
+            "customStyles": "custom"
+          }
+        },
+        {
+          "name": "borderColor",
+          "displayName": "Border Color",
+          "type": "color",
+          "default": "#E0E0E0",
+          "enabled": {
+            "customStyles": "custom",
+            "hasBorder": true
+          }
+        },
+        {
+          "name": "borderSize",
+          "displayName": "Border Size",
+          "type": "number",
+          "default": 1,
+          "control": { "type": "slider", "max": 3, "min": 1 },
+          "enabled": {
+            "customStyles": "custom",
+            "hasBorder": true
+          }
+        },
+        {
+          "name": "rounding",
+          "displayName": "Rounding",
+          "type": "number",
+          "default": 20,
+          "control": { "type": "slider", "max": 20, "min": 0 },
+          "enabled": {
+            "customStyles": "custom"
+          }
+        },
+        {
+          "name": "placeholderTextColor",
+          "displayName": "Placeholder Text Color",
+          "type": "color",
+          "default": "#757575",
+          "enabled": {
+            "customStyles": "custom"
+          }
+        },
+        {
+          "name": "inputTextColor",
+          "displayName": "Input Text Color",
+          "type": "color",
+          "default": "#424242",
+          "enabled": {
+            "customStyles": "custom"
+          }
+        }
+      ]
+    },
+    {
+      "name": "listEmptyState",
+      "displayName": "List Empty State",
+      "props": [
+        {
+          "name": "emptyStateImageStatus",
+          "displayName": "Image",
+          "type": "text",
+          "default": "noImage",
+          "control": {
+            "type": "menu",
+            "options": [
+              { "label": "Above Title", "value": "above" },
+              { "label": "Below Title", "value": "below" },
+              { "label": "No Image", "value": "noImage" }
+            ]
+          }
+        },
+        {
+          "name": "imageSource",
+          "displayName": "Image Source",
+          "role": "listItem",
+          "reference": "images",
+          "type": "image",
+          "enabled": {
+            "emptyStateImageStatus": ["above", "below"]
+          }
+        },
+        {
+          "name": "textTitleDisplay",
+          "displayName": "Text",
+          "type": "text",
+          "default": "noText",
+          "control": {
+            "type": "menu",
+            "options": [
+              { "label": "Title Only", "value": "titleOnly" },
+              { "label": "Title and Subtitle", "value": "titleAndSubtitle" },
+              { "label": "No Text", "value": "noText" }
+            ]
+          }
+        },
+        {
+          "name": "title",
+          "displayName": "Title",
+          "type": "text",
+          "default": "No List Items",
+          "styles": {
+            "fontFamily": "@heading",
+            "fontWeight": "600",
+            "color": "@text",
+            "fontSize": "18"
+          },
+          "enabled": {
+            "textTitleDisplay": ["titleOnly", "titleAndSubtitle"]
+          }
+        },
+        {
+          "name": "subtitle",
+          "displayName": "Subtitle",
+          "type": "text",
+          "default": "Subtitle",
+          "styles": {
+            "fontFamily": "@body",
+            "color": "#212121",
+            "fontWeight": "normal",
+            "fontSize": "18"
+          },
+          "enabled": {
+            "textTitleDisplay": "titleAndSubtitle"
+          }
+        },
+        {
+          "name": "buttonType",
+          "displayName": "Button Type",
+          "type": "text",
+          "default": "noButton",
+          "control": {
+            "type": "menu",
+            "options": [
+              { "label": "Text Button", "value": "text" },
+              { "label": "Outlined Button", "value": "outlined" },
+              { "label": "Contained Button", "value": "contained" },
+              { "label": "No Button", "value": "noButton" }
+            ]
+          }
+        },
+        {
+          "name": "buttonText",
+          "displayName": "Text",
+          "type": "text",
+          "default": "Button",
+          "styles": {
+            "fontFamily": "@body",
+            "fontWeight": "600"
+          },
+          "enabled": {
+            "buttonType": ["text", "outlined", "contained"]
+          }
+        },
+        {
+          "name": "buttonIcon",
+          "displayName": "Icon",
+          "type": "icon",
+          "default": "add",
+          "enabled": {
+            "buttonType": ["text", "outlined", "contained"]
+          }
+        },
+        {
+          "name": "buttonPrimaryColor",
+          "displayName": "Button Color",
+          "type": "color",
+          "default": "@primary",
+          "enabled": {
+            "buttonType": ["text", "outlined", "contained"]
+          }
+        },
+        {
+          "name": "buttonContrastColor",
+          "displayName": "Icon & Text Color",
+          "type": "color",
+          "default": "@contrast:buttonPrimaryColor",
+          "enabled": { "buttonType": "contained" }
+        },
+        {
+          "name": "buttonBorderRadius",
+          "displayName": "Rounding",
+          "type": "number",
+          "control": {
+            "type": "slider",
+            "max": 18,
+            "min": 0
+          },
+          "default": 4,
+          "enabled": { "buttonType": ["contained", "outlined"] }
+        },
+        {
+          "name": "buttonShadow",
+          "displayName": "Shadow",
+          "type": "boolean",
+          "default": true,
+          "enabled": { "buttonType": "contained" }
+        },
+        {
+          "name": "buttonUpperCase",
+          "displayName": "Uppercase",
+          "type": "boolean",
+          "default": true,
+          "enabled": {
+            "buttonType": ["text", "outlined", "contained"]
+          }
+        },
+        {
+          "name": "buttonAction",
+          "type": "action",
+          "displayName": "Click Actions",
+          "enabled": {
+            "buttonType": ["text", "outlined", "contained"]
+          }
+        }
+      ]
+    }
+  ]
+}

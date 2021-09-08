@@ -18,6 +18,6 @@
       "rootDir": "src",
       "outDir": "build"
   },
-  "include": ["src/**/*", "src/**/*.json", "src/**/*.png"],
+  "include": ["src/**/*", "src/**/*.json", "src/**/*.png", "rnmu.d.ts"],
   "exclude": ["node_modules", "build"]
 }

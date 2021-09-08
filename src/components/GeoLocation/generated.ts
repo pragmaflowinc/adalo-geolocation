@@ -6,7 +6,7 @@
 export interface IStyles {
   fontFamily?: string
   fontSize?: number
-  fontWeight?: number | string
+  fontWeight?: "normal" | "bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900" | undefined
   textAlignment?: string
   color?: string
 }
@@ -27,12 +27,12 @@ export interface GeoLocationProps {
   styles: { title: IStyles }
   icon?: string
   backgroundColor?: string
-  interval?: number
   timeout?: number
   maximumAge?: number
   highAccuracy?: boolean
   significantChanges?: boolean
   liveUpdates?: boolean
+  interval?: number
   onLocationError?: (GeolocationPositionErrorreasoncode?: number, Additionaldetails?: string) => void
   onLocationChange?: (Currentlatitude?: number, Currentlongitude?: number, Currentheading?: number, Accuracyoflocation?: number, Currentaltitude?: number, Accuracyofthealtitude?: number, Currentspeed?: number, Timestampwhenlocationwasread?: number) => void
   appId: string
