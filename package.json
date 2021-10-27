@@ -1,7 +1,7 @@
 {
   "name": "pf-adalo-geo-location",
   "description": "Reads the current location information",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "main": "index.js",
   "license": "MIT",
   "author": "Steven McKeown",
@@ -16,13 +16,13 @@
     "displayName": "GeoLocation",
     "components": [
       {
-        "name": "GeoFilteredList",
-        "manifest": "./src/components/GeoFilteredList/manifest.json"
-      },
-      {
         "name": "GeoLocation",
         "manifest": "./src/components/GeoLocation/manifest.json"
-      }
+      },
+      {
+        "name": "GeoFilteredList",
+        "manifest": "./src/components/GeoFilteredList/manifest.json"
+      }      
     ],
     "iosInstallScript": "./scripts/install_ios.sh",
     "androidInstallScript": "./scripts/install_android.sh"

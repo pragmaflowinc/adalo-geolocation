@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Image, ViewStyle, ImageStyle } from 'react-nati
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
 import {TextButton as WrappedTextButton} from "@protonapp/material-components"
+import sqrEmptyStateImage from './SqrEmptyState'
 import { IListEmptyState } from './generated'
 
 export default class EmptyListWrapper extends Component<IListEmptyState> {
@@ -82,7 +83,7 @@ export default class EmptyListWrapper extends Component<IListEmptyState> {
 function ImageHolder(props: IListEmptyState) {
   let { imageSource, emptyStateImageStatus } = props
   let realImageSource = !imageSource
-    ? require('./sqr-empty-state.png')
+    ? require(sqrEmptyStateImage)
     : imageSource
   if (!emptyStateImageStatus || emptyStateImageStatus === 'noImage') {
     return (
