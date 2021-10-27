@@ -1,5 +1,5 @@
 {
-  "name": "pf-adalo-geo-location",
+  "name": "pf-geo-location-steven",
   "description": "Reads the current location information",
   "version": "1.0.6",
   "main": "index.js",
@@ -13,14 +13,14 @@
   },
   "adalo": {
     "logo": "./logo.png",
-    "displayName": "GeoLocation",
+    "displayName": "GeoLocationPF",
     "components": [
       {
-        "name": "GeoLocation",
+        "name": "GeoLocationPF",
         "manifest": "./src/components/GeoLocation/manifest.json"
       },
       {
-        "name": "GeoFilteredList",
+        "name": "GeoFilteredListPF",
         "manifest": "./src/components/GeoFilteredList/manifest.json"
       }      
     ],

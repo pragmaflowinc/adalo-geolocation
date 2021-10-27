@@ -1,5 +1,5 @@
 {
-  "displayName": "GeoLocation",
+  "displayName": "GeoLocation PragmaFlow",
   "defaultWidth": 160,
   "defaultHeight": 32,
   "components": "./index.js",
