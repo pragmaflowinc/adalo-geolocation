@@ -6,6 +6,10 @@ The interaction for the component is a button to request the location of a user 
 
 This component has not been published to the marketplace at the time of this writting so the only way to use it is private.
 
+## Installation
+
+We have released a new website to facilitate installing componets located here: https://adalo.pragmaflowservers.com/install-component
+
 ## Motivation
 
 The motivation behind this component is to retrieve a users location data. This allows you to calculate the distance between users and display a list of `users near me` or pass the data into a map component or web view to show the current location.
@@ -51,3 +55,7 @@ Once the component is installed, you can drag and drop the location component on
 | `Trigger when the location has been updated` | action | This event gets fired when new location data is available |
 
 
+## Version history
+
+* 1.0.3 - Fixed issue with building in iOS
+* 1.0.0 - Initial commit
