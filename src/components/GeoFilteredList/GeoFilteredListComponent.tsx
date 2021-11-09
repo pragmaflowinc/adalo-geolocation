@@ -25,16 +25,17 @@ export function GeoFilteredListComponent(props: GeoFilteredListProps) {
     listProps.items[0].secondLine?.displayDistance
   ) {
     listProps.items = listProps.items.reduce((acc, item) => {
+      if (props.currentLatitude && props.currentLongitude && item.geoData && item.geoData.itemLatitude && item.geoData.itemLongitude)
       if (item.secondLine) {
         const distance = Math.floor(
           getDistance(
             {
-              latitude: props.currentLatitude!,
-              longitude: props.currentLongitude!,
+              latitude: props.currentLatitude,
+              longitude: props.currentLongitude,
             },
             {
-              latitude: item.geoData?.itemLatitude!,
-              longitude: item.geoData?.itemLongitude!,
+              latitude: item.geoData.itemLatitude,
+              longitude: item.geoData.itemLongitude,
             }
           ) /
             (props.unitsOfMeasure === "imperial"

@@ -14,22 +14,25 @@ const GeoFilteredList = (props: GeoFilteredListProps) => {
   useEffect(() => {
     if (props.items) {
       setItems(props.items.filter(item => {
-        const distance = Math.floor(
-          getDistance(
-            {
-              latitude: props.currentLatitude!,
-              longitude: props.currentLongitude!,
-            },
-            {
-              latitude: item.geoData?.itemLatitude!,
-              longitude: item.geoData?.itemLongitude!,
-            }
-          ) /
-            (props.unitsOfMeasure === "imperial"
-              ? METER_TO_MILE
-              : METER_TO_KILOMETER)
-        );
-        return distance <= (props.currentRadius || Number.MAX_SAFE_INTEGER)
+        if (props.currentLatitude && props.currentLongitude && item.geoData && item.geoData.itemLatitude && item.geoData.itemLongitude) {
+          const distance = Math.floor(
+            getDistance(
+              {
+                latitude: props.currentLatitude!,
+                longitude: props.currentLongitude!,
+              },
+              {
+                latitude: item.geoData?.itemLatitude!,
+                longitude: item.geoData?.itemLongitude!,
+              }
+            ) /
+              (props.unitsOfMeasure === "imperial"
+                ? METER_TO_MILE
+                : METER_TO_KILOMETER)
+          );
+          return distance <= (props.currentRadius || Number.MAX_SAFE_INTEGER)
+        }
+        return false
       }).map(item => {
         const retVal = {
           id: item.id,
@@ -47,24 +50,26 @@ const GeoFilteredList = (props: GeoFilteredListProps) => {
         if (item.secondLine && item.secondLine.enabled) {
           const secondLineTextBuilder = []
           if (item.secondLine.displayDistance) {
-            const distance = Math.floor(
-              getDistance(
-                {
-                  latitude: props.currentLatitude!,
-                  longitude: props.currentLongitude!,
-                },
-                {
-                  latitude: item.geoData?.itemLatitude!,
-                  longitude: item.geoData?.itemLongitude!,
-                }
-              ) /
-                (props.unitsOfMeasure === "imperial"
-                  ? METER_TO_MILE
-                  : METER_TO_KILOMETER)
-            );
-            secondLineTextBuilder.push(
-              `${distance}${props.unitsOfMeasure === "imperial" ? "mi" : "km"}`
-            )
+            if (props.currentLatitude && props.currentLongitude && item.geoData && item.geoData.itemLatitude && item.geoData.itemLongitude) { 
+              const distance = Math.floor(
+                getDistance(
+                  {
+                    latitude: props.currentLatitude,
+                    longitude: props.currentLongitude,
+                  },
+                  {
+                    latitude: item.geoData.itemLatitude,
+                    longitude: item.geoData.itemLongitude,
+                  }
+                ) /
+                  (props.unitsOfMeasure === "imperial"
+                    ? METER_TO_MILE
+                    : METER_TO_KILOMETER)
+              );
+              secondLineTextBuilder.push(
+                `${distance}${props.unitsOfMeasure === "imperial" ? "mi" : "km"}`
+              )
+            }
           }
           if (item.secondLine.text) {
             secondLineTextBuilder.push(item.secondLine.text)

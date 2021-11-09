@@ -112,7 +112,7 @@ function ImageHolder(props: IListEmptyState) {
           <Image
             resizeMode="cover"
             style={styles.image}
-            source={realImageSource}
+            source={realImageSource as ImageSourcePropType}
           />
         </View>
       </>
