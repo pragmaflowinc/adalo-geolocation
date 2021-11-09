@@ -1,0 +1,51 @@
+{
+  "displayName": "GeoDistance",
+  "defaultWidth": 160,
+  "defaultHeight": 32,
+  "components": "./index.js",
+  "icon": "./logo.png",
+  "props": [{
+    "name": "firstLatitude",
+    "displayName": "What is the first latitude?",
+    "type": "number"
+  },
+  {
+    "name": "firstLongitude",
+    "displayName": "What is the first longitude?",
+    "type": "number"
+  },{
+    "name": "secondLatitude",
+    "displayName": "What is the second latitude?",
+    "type": "number"
+  },
+  {
+    "name": "secondLongitude",
+    "displayName": "What is the second longitude?",
+    "type": "number"
+  },
+  {
+    "name": "unitsOfMeasure",
+    "displayName": "What units should we use?",
+    "type": "text",
+    "default": "metric",
+    "control": {
+      "type": "menu",
+      "options": [
+        { "label": "Metric", "value": "metric" },
+        { "label": "Imperial", "value": "imperial" }
+      ]
+    }
+  },
+  {
+      "name": "onCalculated",
+      "displayName": "Trigger when the distance has been calculated",
+      "type": "action",
+      "arguments": [
+        {
+          "type": "number",
+          "displayName": "The distance"
+        }
+      ]
+    }
+  ]
+}
