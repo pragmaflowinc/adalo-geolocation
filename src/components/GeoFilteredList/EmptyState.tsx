@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Image, ViewStyle, ImageStyle } from 'react-native'
+import { View, Text, StyleSheet, Image, ViewStyle, ImageStyle, ImageSourcePropType } from 'react-native'
 // @ts-ignore
 import Icon from 'react-native-vector-icons/dist/MaterialIcons'
 
@@ -83,7 +83,7 @@ export default class EmptyListWrapper extends Component<IListEmptyState> {
 function ImageHolder(props: IListEmptyState) {
   let { imageSource, emptyStateImageStatus } = props
   let realImageSource = !imageSource
-    ? require(sqrEmptyStateImage)
+    ? { uri: sqrEmptyStateImage }
     : imageSource
   if (!emptyStateImageStatus || emptyStateImageStatus === 'noImage') {
     return (
@@ -98,7 +98,7 @@ function ImageHolder(props: IListEmptyState) {
           <Image
             resizeMode="cover"
             style={styles.image}
-            source={realImageSource}
+            source={realImageSource as ImageSourcePropType}
           />
         </View>
         <TitleHolder {...props}></TitleHolder>
