@@ -132,7 +132,7 @@ export interface GeoFilteredListProps {
   listHeader?: IListHeader
   searchBar?: ISearchBar
   listEmptyState?: IListEmptyState
-  items?: IItems[]
+  items: IItems[]
   currentLatitude?: number
   currentLongitude?: number
   currentRadius?: number
