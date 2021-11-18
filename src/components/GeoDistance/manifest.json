@@ -37,6 +37,12 @@
     }
   },
   {
+    "name": "precision",
+    "displayName": "What is the maximum number of decimal places?",
+    "type": "number",
+    "default": 0
+  },
+  {
       "name": "onCalculated",
       "displayName": "Trigger when the distance has been calculated",
       "type": "action",
