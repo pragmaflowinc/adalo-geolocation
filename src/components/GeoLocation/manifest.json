@@ -1,7 +1,7 @@
 {
   "displayName": "GeoLocation PragmaFlow",
   "defaultWidth": 160,
-  "defaultHeight": 32,
+  "defaultHeight": 36,
   "components": "./index.js",
   "icon": "./logo.png",
   "props": [
@@ -55,6 +55,12 @@
     {
       "name": "liveUpdates",
       "displayName": "Continuously reads the location",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "name": "onPageLoad",
+      "displayName": "Get location on page load?",
       "type": "boolean",
       "default": true
     },
