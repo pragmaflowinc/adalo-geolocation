@@ -25,6 +25,32 @@
       "type": "number"
     },
     {
+      "name": "sortBy",
+      "displayName": "What would you like to sort this on?",
+      "type": "text",
+      "default": "none",
+      "control": {
+        "type": "menu",
+        "options": [
+          { "label": "None", "value": "none" },
+          { "label": "By Title (first line)", "value": "firstLine" },
+          { "label": "By Distance", "value": "distance" }
+        ]
+      }
+    },
+    {
+      "name": "sortOrder",
+      "displayName": "How would you like the list sorted?",
+      "type": "text",
+      "control": {
+        "type": "menu",
+        "options": [
+          { "label": "Ascending order", "value": "asc" },
+          { "label": "Descending order", "value": "desc" }
+        ]
+      }
+    },
+    {
       "name": "unitsOfMeasure",
       "displayName": "What units should we use?",
       "type": "text",

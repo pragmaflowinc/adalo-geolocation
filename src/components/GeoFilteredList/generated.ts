@@ -82,8 +82,8 @@ export interface IListHeader {
 export interface ISearchBar {
   enabled?: boolean
   placeholderText?: string
-  styles: { placeholderText: IStyles, notFoundText: IStyles }
   notFoundText?: string
+  styles: { notFoundText: IStyles, placeholderText: IStyles }
   customStyles?: boolean
   hasIcon?: boolean
   icon?: string
@@ -132,10 +132,12 @@ export interface GeoFilteredListProps {
   listHeader?: IListHeader
   searchBar?: ISearchBar
   listEmptyState?: IListEmptyState
-  items: IItems[]
+  items?: IItems[]
   currentLatitude?: number
   currentLongitude?: number
   currentRadius?: number
+  sortBy?: string
+  sortOrder?: string
   unitsOfMeasure?: string
   dividerType?: string
   dividerColor?: string
