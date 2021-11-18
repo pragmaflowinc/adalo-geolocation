@@ -15,8 +15,9 @@ export function GeoLocationComponent({
   liveUpdates = false,
   onLocationChange = (Currentlatitude?: number, Currentlongitude?: number, Currentheading?: number, Accuracyoflocation?: number, Currentaltitude?: number, Accuracyofthealtitude?: number, Currentspeed?: number, timestamp?: number) => null,
   onLocationError = (Reasonfortheerror?: number, Additionaldetails?: string) => null,
+  onPageLoad = true,
   styles: { title: titleStyles },
-  title = "",
+  title = "", 
   icon,
   backgroundColor,
   interval = 5000,
@@ -28,7 +29,9 @@ export function GeoLocationComponent({
   
   const watchId = useRef<number | null>(null);
   useEffect(() => {
-    getLocation()
+    if (onPageLoad) {
+      getLocation()
+    }
   }, [])
   useEffect(() => {
     if (liveUpdates) { getLocationUpdates() }

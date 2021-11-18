@@ -32,6 +32,7 @@ export interface GeoLocationProps {
   highAccuracy?: boolean
   significantChanges?: boolean
   liveUpdates?: boolean
+  onPageLoad?: boolean
   interval?: number
   onLocationError?: (GeolocationPositionErrorreasoncode?: number, Additionaldetails?: string) => void
   onLocationChange?: (Currentlatitude?: number, Currentlongitude?: number, Currentheading?: number, Accuracyoflocation?: number, Currentaltitude?: number, Accuracyofthealtitude?: number, Currentspeed?: number, Timestampwhenlocationwasread?: number) => void
