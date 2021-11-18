@@ -28,6 +28,7 @@ export interface GeoDistanceProps {
   secondLatitude?: number
   secondLongitude?: number
   unitsOfMeasure?: string
+  precision?: number
   onCalculated?: (Thedistance?: number) => void
   appId: string
   _fonts: IFonts
