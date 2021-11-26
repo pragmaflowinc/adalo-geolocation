@@ -57,8 +57,8 @@ const GeoFilteredList = (props: GeoFilteredListProps) => {
           id: item.id,
           firstLine: item.firstLine,
           onPress: () => {
-            if (props.onPress) {
-              props.onPress()
+            if (item.onPress) {
+              item.onPress()
             }
           },
           rightSection: item.rightSection,
