@@ -122,6 +122,7 @@ export interface IItems {
   secondLine?: ISecondLine
   leftSection?: ILeftSection
   rightSection?: IRightSection
+  onPress?: () => void
   _meta: any
 }
 
@@ -141,7 +142,6 @@ export interface GeoFilteredListProps {
   unitsOfMeasure?: string
   dividerType?: string
   dividerColor?: string
-  onPress?: () => void
   appId: string
   _fonts: IFonts
   _width: number
