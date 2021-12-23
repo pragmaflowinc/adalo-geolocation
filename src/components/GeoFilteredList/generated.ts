@@ -27,8 +27,8 @@ export interface IGeoData {
 }
 
 export interface IFirstLine {
-  text?: string
-  styles: { text: IStyles }
+  text: string
+  styles?: { text?: IStyles }
   titleLineNum?: number
 }
 
@@ -36,7 +36,7 @@ export interface ISecondLine {
   enabled?: boolean
   displayDistance?: boolean
   text?: string
-  styles: { text: IStyles }
+  styles?: { text?: IStyles }
   subtitleLineNum?: number
 }
 
@@ -102,7 +102,7 @@ export interface IListEmptyState {
   imageSource?: string | IAvatar
   textTitleDisplay?: string
   title?: string
-  styles: { title: IStyles, subtitle: IStyles, buttonText: IStyles }
+  styles?: { title?: IStyles, subtitle?: IStyles, buttonText?: IStyles }
   subtitle?: string
   buttonType?: string
   buttonText?: string

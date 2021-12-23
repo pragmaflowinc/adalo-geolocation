@@ -34,7 +34,9 @@ export default class EmptyListWrapper extends Component<IListEmptyState> {
       styles: emptyListStyles,
     } = this.props
 
-    emptyListStyles.title = emptyListStyles.buttonText
+    if (emptyListStyles) {
+      emptyListStyles.title = emptyListStyles.buttonText
+    }
 
     const buttonStyles =
       (buttonShadow && buttonType !== 'text' && buttonType !== 'outlined'

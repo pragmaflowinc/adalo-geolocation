@@ -14,6 +14,7 @@ interface ItemWithDistance extends IItems {
 
 const GeoFilteredList = (props: GeoFilteredListProps) => {
   const [items, setItems] = useState<RowProps[]>([])
+  console.log(props)
   useEffect(() => {
     if (props.items) {
       setItems(props.items.reduce((acc, item, index) => {
@@ -79,8 +80,8 @@ const GeoFilteredList = (props: GeoFilteredListProps) => {
             secondLineTextBuilder.push(item.secondLine.text)
           }
           retVal.secondLine = {
+            ...item.secondLine,
             text: secondLineTextBuilder.join(' - '),
-            color: item.secondLine.styles.text.color,
             enabled: true
           }
         }
@@ -92,10 +93,9 @@ const GeoFilteredList = (props: GeoFilteredListProps) => {
   if (props.listEmptyState && (!items || (items && !items[0]))) {
     return <EmptyState {...props.listEmptyState!}></EmptyState>;
   }
-
   return (
-    <View style={styles.wrapper}>
-      <SimpleList items={items} dividerColor={props.dividerColor} dividerType={props.dividerType} />
+    <View style={{ backgroundColor: props.background?.backgroundColor}}>
+      <SimpleList {...props} items={items} dividerColor={props.dividerColor} dividerType={props.dividerType} />
     </View>
   )
 }
