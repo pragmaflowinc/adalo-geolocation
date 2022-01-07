@@ -51,7 +51,6 @@ export class SimpleList extends Component<SimpleListProps, {fullWidth: number, c
     fullWidth: 0,
     currentQuery: '',
   }
-
   handleLayout = ({ nativeEvent }: LayoutChangeEvent) => {
     const { width } = (nativeEvent && nativeEvent.layout) || {}
     const { fullWidth: prevWidth } = this.state
@@ -96,6 +95,8 @@ export class SimpleList extends Component<SimpleListProps, {fullWidth: number, c
       listHeader,
       listEmptyState,
     } = this.props
+    console.log("SimpleList")
+    console.log(items)
 
     if (!items) return <View></View>
 

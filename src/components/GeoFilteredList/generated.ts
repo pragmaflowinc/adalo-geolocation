@@ -24,6 +24,8 @@ export interface IAvatar {
 export interface IGeoData {
   itemLatitude?: number
   itemLongitude?: number
+  address?: string
+  informationType?: string
 }
 
 export interface IFirstLine {
@@ -134,8 +136,11 @@ export interface GeoFilteredListProps {
   searchBar?: ISearchBar
   listEmptyState?: IListEmptyState
   items?: IItems[]
+  informationType?: string
+  googleApiKey?: string
   currentLatitude?: number
   currentLongitude?: number
+  address?: string
   currentRadius?: number
   sortBy?: string
   sortOrder?: string

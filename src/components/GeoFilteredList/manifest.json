@@ -6,18 +6,53 @@
   "icon": "./logo.png",
   "props": [
     {
+      "name": "informationType",
+      "displayName": "What type of coordinates do you want to use?",
+      "type": "text",
+      "defaultValue": "latlong",
+      "control": {
+        "type": "menu",
+        "options": [
+          { "label": "Lat/Long", "value": "latlong" },
+          { "label": "Addresses", "value": "address" }
+        ]
+      }
+    },
+    {
+      "name": "googleApiKey",
+      "displayName": "Google API Key",
+      "type": "text",
+      "enabled": {
+        "informationType": "address"
+      }
+    },
+    {
       "name": "items",
       "displayName": "What is this a list of?",
       "type": "list"
     },{
       "name": "currentLatitude",
       "displayName": "What is the latitude to filter?",
-      "type": "number"
+      "type": "number",
+      "enabled": {
+        "informationType": "latlong"
+      }
     },
     {
       "name": "currentLongitude",
       "displayName": "What is the longitude to filter?",
-      "type": "number"
+      "type": "number",
+      "enabled": {
+        "informationType": "latlong"
+      }
+    },
+    {
+      "name": "address",
+      "displayName": "What is the address",
+      "type": "text",
+      "enabled": {
+        "informationType": "address"
+      }
     },
     {
       "name": "currentRadius",
@@ -99,16 +134,51 @@
       "reference": "items",
       "props": [
         {
+          "name": "informationType",
+          "displayName": "What type of coordinates do you want to use?",
+          "type": "text",
+          "defaultValue": "latlong",
+          "control": {
+            "type": "menu",
+            "options": [
+              { "label": "Lat/Long", "value": "latlong" },
+              { "label": "Addresses", "value": "address" }
+            ]
+          }
+        },
+        {
           "name": "itemLatitude",
           "displayName": "Latitude",
           "type": "number",
-          "default": 0
+          "default": 0,
+          "enabled": {
+            "informationType": "latlong"
+          }
         },
         {
           "name": "itemLongitude",
           "displayName": "Longitude",
           "type": "number",
-          "default": 0
+          "default": 0,
+          "enabled": {
+            "informationType": "latlong"
+          }
+        },
+        {
+          "name": "address",
+          "displayName": "What is the address",
+          "type": "text",
+          "enabled": {
+            "informationType": "address"
+          }
+        },
+        {
+          "name": "googleApiKey",
+          "displayName": "Google API Key",
+          "type": "text",
+          "enabled": {
+            "informationType": "address"
+          }
         }
       ]
     },
